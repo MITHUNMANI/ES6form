@@ -46,7 +46,7 @@ async function displayData(userIndex) {
     const table_body = document.querySelector('#user-form-table tbody');
     table_body.innerHTML = '';
     const userFormDetails = JSON.parse(localStorage.getItem('userDetails') || []);
-    if(userFormDetails.length === 0){
+    if(userFormDetails && userFormDetails.length === 0){
         const row = document.createElement('tr');
         const cell = document.createElement('td');
         cell.colSpan = 3;
