@@ -46,9 +46,20 @@ async function displayData(userIndex) {
     const table_body = document.querySelector('#user-form-table tbody');
     table_body.innerHTML = '';
     const userFormDetails = JSON.parse(localStorage.getItem('userDetails') || []);
+    if(userFormDetails.length === 0){
+        const row = document.createElement('tr');
+        const cell = document.createElement('td');
+        cell.colSpan = 3;
+        cell.textContent = 'No data available';
+        cell.style.textAlign = 'center';
+        row.appendChild(cell);
+        table_body.appendChild(row);
+        return;
+     }
     userFormDetails.forEach((userFormDetail,index)=>{
         const table_row = document.createElement('tr');
         console.log(userIndex,index);
+       
         if(userIndex === index){
             table_row.innerHTML = `
             <td>
